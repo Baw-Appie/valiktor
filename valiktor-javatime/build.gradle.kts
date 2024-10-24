@@ -1,7 +1,7 @@
 dependencies {
-    compile(project(":valiktor-core"))
+    implementation(project(":valiktor-core"))
 
-    testCompile(kotlin("reflect"))
+    testImplementation(kotlin("reflect"))
 }
 
 tasks {

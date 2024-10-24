@@ -1,10 +1,10 @@
 plugins {
-    kotlin("jvm") version "1.4.10"
+    kotlin("jvm") version "2.0.21"
     id("jacoco")
     id("signing")
     id("maven-publish")
     id("org.jetbrains.dokka") version "0.10.1"
-    id("org.jmailen.kotlinter") version "3.2.0"
+//    id("org.jmailen.kotlinter") version "4.4.1"
     id("com.adarshr.test-logger") version "2.1.1"
 }
 
@@ -23,7 +23,7 @@ subprojects {
         plugin("signing")
         plugin("maven-publish")
         plugin("org.jetbrains.dokka")
-        plugin("org.jmailen.kotlinter")
+//        plugin("org.jmailen.kotlinter")
         plugin("com.adarshr.test-logger")
     }
 
@@ -35,31 +35,31 @@ subprojects {
     }
 
     dependencies {
-        compile(kotlin("stdlib"))
+        implementation(kotlin("stdlib"))
 
-        testCompile(kotlin("test-junit5"))
-        testCompile("org.assertj:assertj-core:$assertjVersion")
-        testRuntime("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+        testImplementation(kotlin("test-junit5"))
+        testImplementation("org.assertj:assertj-core:$assertjVersion")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junitVersion")
     }
 
     testlogger {
         setTheme("mocha")
     }
 
-    kotlinter {
-        disabledRules = arrayOf("import-ordering")
-    }
+//    kotlinter {
+//        disabledRules = arrayOf("import-ordering")
+//    }
 
     tasks {
         compileKotlin {
             kotlinOptions {
-                jvmTarget = "1.6"
+                jvmTarget = "1.8"
             }
         }
 
         compileTestKotlin {
             kotlinOptions {
-                jvmTarget = "1.6"
+                jvmTarget = "1.8"
             }
         }
 

@@ -1,6 +1,6 @@
 plugins {
-    kotlin("plugin.spring") version "1.4.10"
-    id("org.springframework.boot") version "1.5.22.RELEASE"
+    kotlin("plugin.spring") version "2.0.21"
+    id("org.springframework.boot") version "2.7.18"
 }
 
 val jacksonVersion = "2.9.10"
@@ -14,22 +14,22 @@ repositories {
 }
 
 dependencies {
-    implementation(platform("org.springframework.boot:spring-boot-dependencies:1.5.22.RELEASE"))
+    implementation(platform("org.springframework.boot:spring-boot-dependencies:2.7.18"))
 
-    compile(kotlin("stdlib"))
-    compile(kotlin("reflect"))
-    compile(project(":valiktor-javamoney"))
-    compile(project(":valiktor-javatime"))
-    compile(project(":valiktor-spring:valiktor-spring-boot-starter"))
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
-    compile("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
-    compile("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
-    compile("org.zalando:jackson-datatype-money:$jacksonMoneyVersion")
-    compile("javax.money:money-api:$moneyVersion")
-    runtime("org.javamoney:moneta:$monetaVersion")
+    implementation(kotlin("stdlib"))
+    implementation(kotlin("reflect"))
+    implementation(project(":valiktor-javamoney"))
+    implementation(project(":valiktor-javatime"))
+    implementation(project(":valiktor-spring:valiktor-spring-boot-starter"))
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
+    implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:$jacksonVersion")
+    implementation("org.zalando:jackson-datatype-money:$jacksonMoneyVersion")
+    implementation("javax.money:money-api:$moneyVersion")
+    runtimeOnly("org.javamoney:moneta:$monetaVersion")
 
-    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     // for Spring Boot 1.x + JUnit 5 support
-    testCompile("com.github.sbrannen:spring-test-junit5:$springTestJunit5")
+    testImplementation("com.github.sbrannen:spring-test-junit5:$springTestJunit5")
 }
